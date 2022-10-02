@@ -35,143 +35,6 @@
 
 
 <!-- ********** -->
-<!-- St Kabir Public school, Chandigarh -->
-<!-- id : title1 -->
-<!-- ********** -->
-
-  <events name="title1_events" 
-    onTourStart="showtitle1();"
-    hidetourcontrols="hidetitle1();" 
-    showtourcontrols="showtitle1();" 
-    changetourlanguage="changeLanguagetitle1"
-    keep="true" />
-
-  <action name="hidetitle1">set(layer[title1].visible, false);</action>
-  <action name="showtitle1">set(layer[title1].visible, true );</action>
-
-  <action name="changeLanguagetitle1">
-    getmessage(layer[title1].html,get(projecttitleid));
-    escape(layer[title1].html);
-  </action>
-
-  <layer name="title1" keep="true" zorder="1"
-         type="text"
-         align="bottom" x="0" y="0"
-         onloaded="getmessage(html,get(projecttitleid));escape(html);"
-         bg="false"
-         bgborder="0"
-         alpha="1"
-         visible="false"
-         capture="false" handcursor="false" enabled="false"
-         interactivecontent="false" 
-         css="text-align:center;
-              color:#ffffff;
-              font-family:Arial;
-              font-weight:bold;
-              font-size:18px;"/>
-
-<!-- ********** -->
-<!-- WebVR Button -->
-<!-- id : webvrbutton -->
-<!-- ********** -->
-
-
-	<layer name="webvrbutton"
-		keep="true"
-		devices="mobile"
-		blocked="false"
-		alpha="1"
-		url="%FIRSTXML%/graphics/webvrbutton/btn_webvr.png"
-		align="bottomright"
-		x="10"
-		y="10"
-		zorder="2"
-		visible="false"
-		onclick="if(scene[get(xml.scene)].full360 AND disableCurrentSceneVrConservation !== true,
-    js(accessWebVr(get(xml.scene),get(videoscenestarttime)));
-,
-    js(accessWebVr(null));
-);"
-
-		crop="0|0|100|63"
-		/>
-
-	<events name="webvrbuttonevents"
-		onvrunavailable="hidewebvrbutton(true);"
-		devices="mobile"
-		onTourStart="showwebvrbutton();"
-		hidetourcontrols="hidewebvrbutton();"
-		showtourcontrols="showwebvrbutton();"
-		keep="true" />
-	<action name="hidewebvrbutton" devices="mobile">if(%1 == true,set(layer[webvrbutton].blocked, true););set(layer[webvrbutton].visible, false);</action>
-	<action name="showwebvrbutton" devices="mobile">if(tour_displaycontrols,if(layer[webvrbutton].blocked == false,set(layer[webvrbutton].visible, true););,hidewebvrbutton(););</action>
-
-
-<!-- ********** -->
-<!-- Logo1 -->
-<!-- id : logo1 -->
-<!-- ********** -->
-
-
-  <layer align="top"
-         x="0"
-         y="450"
-         zorder="3"
-         name="logo1"
-         keep="true"
-         visible="false"
-         capture="false"
-
-         url="%FIRSTXML%/graphics/logo1/seal_3.png" 
-         handcursor="false"
-
-         height="10"
-         width="244"
-
-         />
-
-  <events name="logo1events" 
-    onTourStart="showlogo1();"
-    keep="true" />
-
-  <action name="hidelogo1">
-    set(layer[logo1].visible, false);
-  </action>
-  <action name="showlogo1">
-      set(layer[logo1].visible, true);
-  </action>
-
-
-
-
-
-<!-- ********** -->
-<!-- Force Landscape on Mobile -->
-<!-- id : ForceLandscapeMobilePlugin -->
-<!-- ********** -->
-
-	<events name="mobileorientation_events" devices="mobile" keep="true" onresize="mobileorientation_portrait_mode_check();"/>
-
-	<action name="mobileorientation_portrait_mode_check" device="mobile">
-		div(aspect, stagewidth, stageheight);
-		if(aspect != lastaspect OR '%1' == 'true',
-			copy(lastaspect, aspect);
-			if(stagewidth GT stageheight,
-				tween(layer[mobileorientation_rotate_device_required].alpha, 0.0, 0.0);
-			,
-				tween(layer[mobileorientation_rotate_device_required].alpha, 1.0);
-				delayedcall(3.0, tween(layer[mobileorientation_rotate_device_required].alpha, 0.0, 1.0););
-			);
-		);
-	</action>	
-
-	<layer name="mobileorientation_rotate_device_required" keep="true" devices="mobile" 
-		url="%FIRSTXML%/graphics/rotate_device.png" width="80%" height="prop"
-		align="center" edge="center"
-		autoalpha="true" alpha="0.0"
-		enabled="false"
-		/>	
-<!-- ********** -->
 <!-- Sans Control Bar -->
 <!-- id : SansControlBar -->
 <!-- ********** -->
@@ -214,7 +77,7 @@
   <layer name="SansControlBar_menu_bg"
          keep="true"
          type="container"
-         zorder="5"
+         zorder="1"
          width="40"
          height="40"
          align="bottomright"
@@ -246,52 +109,6 @@
             devices="html5"
             />
 
-    <layer name="SansControlBarbtn_left"
-            url="%FIRSTXML%/graphics/sans controlbar/btn_move_left.png"
-            ondown="viewControlMoveLeft(false);
-"
-            onup="viewControlMoveHoriStop();
-"
-            style="SansControlBar_btn_style"
-            visible="false"
-            tooltip="SansControlBarmoveLeftTip"
-            devices="desktop"
-            />
-    <layer name="SansControlBarbtn_right"
-            url="%FIRSTXML%/graphics/sans controlbar/btn_move_right.png"
-            ondown="viewControlMoveRight(false);
-"
-            onup="viewControlMoveHoriStop();
-"
-            style="SansControlBar_btn_style"
-            visible="false"
-            tooltip="SansControlBarmoveRightTip"
-            devices="desktop"
-            />
-
-    <layer name="SansControlBarbtn_up"
-            url="%FIRSTXML%/graphics/sans controlbar/btn_move_up.png"
-            ondown="viewControlMoveUp(false);
-"
-            onup="viewControlMoveVertStop();
-"
-            style="SansControlBar_btn_style"
-            visible="false"
-            tooltip="SansControlBarmoveUpTip"
-            devices="desktop"
-            />
-    <layer name="SansControlBarbtn_down"
-            url="%FIRSTXML%/graphics/sans controlbar/btn_move_down.png"
-            ondown="viewControlMoveDown(false);
-"
-            onup="viewControlMoveVertStop();
-"
-            style="SansControlBar_btn_style"
-            visible="false"
-            tooltip="SansControlBarmoveDownTip"
-            devices="desktop"
-            />
-
 
     <layer name="SansControlBarbtn_sound_on"
             url="%FIRSTXML%/graphics/sans controlbar/btn_start_sound.png"
@@ -311,60 +128,7 @@
             />
 
 
-    <layer name="SansControlBarbtn_prev_pano"
-            url="%FIRSTXML%/graphics/sans controlbar/btn_previous_scene.png"
-            onclick="loadPreviousScene();
-"
-            style="SansControlBar_btn_style"
-            tooltip="SansControlBarprevSceneTip"
-            visible="false"
-            />
-    <layer name="SansControlBarbtn_next_pano"
-            url="%FIRSTXML%/graphics/sans controlbar/btn_next_scene.png"
-            onclick="loadNextScene();
-"
-            style="SansControlBar_btn_style"
-            tooltip="SansControlBarnextSceneTip"
-            visible="false"
-            />
 
-
-
-    <layer name="SansControlBarbtn_openfs"
-            url="%FIRSTXML%/graphics/sans controlbar/btn_enter_fs.png"
-            onclick="enterFullscreen();
-"
-            style="SansControlBar_btn_style"
-            visible="false"
-            devices="fullscreensupport"
-            tooltip="SansControlBaropenFsTip"
-            />
-    <layer name="SansControlBarbtn_closefs"
-            url="%FIRSTXML%/graphics/sans controlbar/btn_close_fs.png"
-            onclick="exitFullscreen();
-"
-            style="SansControlBar_btn_style"
-            visible="false"
-            devices="fullscreensupport"
-            tooltip="SansControlBarcloseFsTip"
-            />
-
-    <layer name="SansControlBarbtn_autorotate_on"
-            url="%FIRSTXML%/graphics/sans controlbar/btn_start_autorotation.png"
-            onclick="resumeautorotation();
-"
-            style="SansControlBar_btn_style"
-            visible="false"
-            tooltip="SansControlBarautorotateOnTip"
-            />
-    <layer name="SansControlBarbtn_autorotate_off"
-            url="%FIRSTXML%/graphics/sans controlbar/btn_stop_autorotation.png"
-            onclick="pauseautorotation();
-"
-            style="SansControlBar_btn_style"
-            visible="false"
-            tooltip="SansControlBarautorotateOffTip"
-            />
 
 
 
@@ -423,24 +187,10 @@
 
   <action name="SansControlBarhideMenuControls">
     set(SansControlBarIsOpened, false);
-if (scene.count GT 1,
-	set(layer[SansControlBarbtn_next_pano].visible, false);
-	set(layer[SansControlBarbtn_prev_pano].visible, false);
-);
 
 
-if (device.desktop,
-	set(layer[SansControlBarbtn_up].visible, false);
-	set(layer[SansControlBarbtn_down].visible, false);
-);
-if (device.desktop,
-	set(layer[SansControlBarbtn_left].visible, false);
-	set(layer[SansControlBarbtn_right].visible, false);
-);
-	SansControlBarupdateFullscreenButtons();
 
 
-	SansControlBarupdateAutorotationButtons();
 
 	SansControlBarupdateSoundButtons();
 
@@ -456,24 +206,10 @@ if (device.desktop,
   <action name="SansControlBarshowMenuControls">
     set(SansControlBarIsOpened, true);
 	set(layer[SansControlBar_menu_bg].visible, true);
-if (scene.count GT 1,
-	set(layer[SansControlBarbtn_next_pano].visible, true);
-	set(layer[SansControlBarbtn_prev_pano].visible, true);
-);
 
 
-if (device.desktop,
-	set(layer[SansControlBarbtn_up].visible, true);
-	set(layer[SansControlBarbtn_down].visible, true);
-);
-if (device.desktop,
-	set(layer[SansControlBarbtn_left].visible, true);
-	set(layer[SansControlBarbtn_right].visible, true);
-);
-	SansControlBarupdateFullscreenButtons();
 
 
-	SansControlBarupdateAutorotationButtons();
 
 	SansControlBarupdateSoundButtons();
 	SansControlBarupdateVrButtons();
@@ -486,62 +222,6 @@ if (device.desktop,
 
 
 
-
-  <events name="SansControlBarmenufullscreenchangeevent"
-          onenterfullscreen="SansControlBarupdateFullscreenButtons();"
-          onexitfullscreen="SansControlBarupdateFullscreenButtons();"
-          keep="true"/>
-	<action name="SansControlBarHideFullscreenButtons">
-		set(layer[SansControlBarbtn_openfs].visible , false);
-		set(layer[SansControlBarbtn_closefs].visible, false);
-	</action>
-	<action name="SansControlBarShowFullscreenButtons">
-		if (device.fullscreensupport,
-			if(tour_fullscreen,
-				set(layer[SansControlBarbtn_openfs].visible , false);
-				set(layer[SansControlBarbtn_closefs].visible, true);
-			,
-				set(layer[SansControlBarbtn_openfs].visible ,true);
-				set(layer[SansControlBarbtn_closefs].visible,false);
-			);
-		,
-			SansControlBarHideFullscreenButtons();
-		);
-	</action>
-	<action name="SansControlBarupdateFullscreenButtons">
-		if (SansControlBarIsOpened,
-			SansControlBarShowFullscreenButtons();
-		,
-			SansControlBarHideFullscreenButtons();
-		);
-	</action>
-
-	<events name="SansControlBarAutorotationEvents"
-		onstartautorotation="SansControlBarupdateAutorotationButtons();"
-		onresumeautorotation="SansControlBarupdateAutorotationButtons();"
-		onstopautorotation="SansControlBarupdateAutorotationButtons();"
-		onpauseautorotation="SansControlBarupdateAutorotationButtons();"
-		keep="true"/>
-	<action name="SansControlBarHideAutorotationButtons">
-		set(layer[SansControlBarbtn_autorotate_off].visible, false);
-		set(layer[SansControlBarbtn_autorotate_on].visible , false);
-	</action>
-	<action name="SansControlBarShowAutorotationButtons">
-		if(autorotate.enabled == false,
-			set(layer[SansControlBarbtn_autorotate_off].visible, false);
-			set(layer[SansControlBarbtn_autorotate_on].visible , true);
-		,
-			set(layer[SansControlBarbtn_autorotate_off].visible, true);
-			set(layer[SansControlBarbtn_autorotate_on].visible , false);
-		);
-	</action>
-	<action name="SansControlBarupdateAutorotationButtons">
-		if (SansControlBarIsOpened,
-			SansControlBarShowAutorotationButtons();
-		,
-			SansControlBarHideAutorotationButtons();
-		);
-	</action>
 
 
   <events name="SansControlBarplaystopsoundsevent" playtoursoundsevent="SansControlBarupdateSoundButtons();" stoptoursoundsevent="SansControlBarupdateSoundButtons();" keep="true"/>
@@ -594,17 +274,7 @@ if (device.desktop,
 
 
 
-      if (device.fullscreensupport,
-        set(layer[SansControlBarbtn_openfs].x , get(SansControlBarbutton_pos));
-        set(layer[SansControlBarbtn_closefs].x, get(SansControlBarbutton_pos));
-        inc(SansControlBarbutton_pos, 45);
-      );
 
-
-
-      set(layer[SansControlBarbtn_autorotate_on].x , get(SansControlBarbutton_pos));
-      set(layer[SansControlBarbtn_autorotate_off].x, get(SansControlBarbutton_pos));
-      inc(SansControlBarbutton_pos, 45);
 
 
       set(layer[SansControlBarbtn_sound_on].x , get(SansControlBarbutton_pos));
@@ -620,27 +290,6 @@ if (device.desktop,
     );
 
 
-
-      if (device.desktop,
-        set(layer[SansControlBarbtn_right].x, get(SansControlBarbutton_pos));
-        inc(SansControlBarbutton_pos, 45);
-        set(layer[SansControlBarbtn_left].x, get(SansControlBarbutton_pos));
-        inc(SansControlBarbutton_pos, 45);
-      );
-
-      if (device.desktop,
-        set(layer[SansControlBarbtn_down].x, get(SansControlBarbutton_pos));
-        inc(SansControlBarbutton_pos, 45);
-        set(layer[SansControlBarbtn_up].x, get(SansControlBarbutton_pos));
-        inc(SansControlBarbutton_pos, 45);
-      );
-
-    if (scene.count GT 1,
-        set(layer[SansControlBarbtn_next_pano].x, get(SansControlBarbutton_pos));
-        inc(SansControlBarbutton_pos, 45);
-        set(layer[SansControlBarbtn_prev_pano].x, get(SansControlBarbutton_pos));
-        inc(SansControlBarbutton_pos, 45);
-      );
 
 
 
@@ -664,6 +313,109 @@ if (device.desktop,
 	</action>
 
 
+
+<!-- ********** -->
+<!-- Force Landscape on Mobile -->
+<!-- id : ForceLandscapeMobilePlugin -->
+<!-- ********** -->
+
+	<events name="mobileorientation_events" devices="mobile" keep="true" onresize="mobileorientation_portrait_mode_check();"/>
+
+	<action name="mobileorientation_portrait_mode_check" device="mobile">
+		div(aspect, stagewidth, stageheight);
+		if(aspect != lastaspect OR '%1' == 'true',
+			copy(lastaspect, aspect);
+			if(stagewidth GT stageheight,
+				tween(layer[mobileorientation_rotate_device_required].alpha, 0.0, 0.0);
+			,
+				tween(layer[mobileorientation_rotate_device_required].alpha, 1.0);
+				delayedcall(3.0, tween(layer[mobileorientation_rotate_device_required].alpha, 0.0, 1.0););
+			);
+		);
+	</action>	
+
+	<layer name="mobileorientation_rotate_device_required" keep="true" devices="mobile" 
+		url="%FIRSTXML%/graphics/rotate_device.png" width="80%" height="prop"
+		align="center" edge="center"
+		autoalpha="true" alpha="0.0"
+		enabled="false"
+		/>	
+<!-- ********** -->
+<!-- Include an XML file -->
+<!-- id : includePlugin -->
+<!-- ********** -->
+
+ <!-- ********** --> <!-- 360Images CoOL Hotspots Plugin --> <!-- CoOL Hotspots --> <!-- id : cool_hotspot --> <!-- ********** -->        <include url="%FIRSTXML%/graphics/coolhotspots.xml"/>   <style 	cooltype="bubble" 	name="Default Point Spot Style" 	type="container"  	width="25"  	height="25"  	bgalpha="0" 	bgcapture="true"   	accuracy="1" 	bubble_width="25"  	bubble_width_onover="75" 	alwayson="false" 	ttalign="top" 	ttedge="bottom" 	 	onover=" 	hidebbhs(); 	set(zorder,20); 	tween(width|height,get(bubble_width_onover)); 	tween(layer[get(mybubble)].width,get(bubble_width_onover)); 	tween(layer[get(mybubble)].height,get(bubble_width_onover)); 	tween(layer[get(mybubble_shadow)].width,get(bubble_width_onover)); 	tween(layer[get(mybubble_shadow)].height,get(bubble_width_onover)); 	tween(layer[get(mypreview)].alpha,1); 	set(layer[get(mypreview)].enabled,true); 	"     	onout=" 	set(zorder,2);  	tween(width|height,get(bubble_width)); 	tween(layer[get(mybubble)].width,get(bubble_width)); 	tween(layer[get(mybubble)].height,get(bubble_width)); 	tween(layer[get(mybubble_shadow)].width,get(bubble_width)); 	tween(layer[get(mybubble_shadow)].height,get(bubble_width)); 	ifnot(alwayson,tween(layer[get(mypreview)].alpha,0));  	set(layer[get(mypreview)].enabled,false);  	" 	 	onloaded=" 	txtadd(hotspot[get(name)].permanentTooltipForSpot, get(tooltip), '_permanent'); 	delayedcall(0.1, 	if(layer[get(permanentTooltipForSpot)].html, 		set(layer[get(permanentTooltipForSpot)].ox,0); 		set(layer[get(permanentTooltipForSpot)].oy,-10); 		); 	); 	 	txtadd(mybubble,'bubble',get(name)); 	addlayer(get(mybubble)); 	copy(hotspot[get(name)].mybubble,mybubble); 	layer[get(mybubble)].loadstyle(cool_hotspotbubblelayer); 	txtadd(mybubble_shadow,'bubble_shadow',get(name)); 	addlayer(get(mybubble_shadow)); 	copy(hotspot[get(name)].mybubble_shadow,mybubble_shadow); 	layer[get(mybubble_shadow)].loadstyle(cool_hotspotbubblelayer_shadow); 			 	txtadd(mypreview,'preview_',get(name)); 	addlayer(get(mypreview)); 	copy(hotspot[get(name)].mypreview,mypreview); 	 	 	if(linkedscene, 		set(layer[get(mypreview)].url,get(scene[get(linkedscene)].thumburl)); 	); 	if(linkedgroup, 		set(layer[get(mypreview)].url,get(panoramagroup[get(linkedgroup)].thumburl)); 	); 	if(photourl, 		set(layer[get(mypreview)].url,get(photourl)); 	); 	 	 	layer[get(mypreview)].loadstyle(cool_hotspotbubble_previewlayer); 	 	txtadd(parentlayer,'hotspot[',get(name),']'); 	copy(layer[get(mybubble)].parent,parentlayer); 	copy(layer[get(mybubble_shadow)].parent,parentlayer); 		 	txtadd(parentlayer2,'layer[',get(mybubble),']'); 	copy(layer[get(mypreview)].parent,parentlayer2); 		 	txtadd(clickaction,'callwith(hotspot[',get(name),'],onclick)'); 	copy(layer[get(mypreview)].onclick,clickaction);  	" /> <style  	name="cool_hotspotbubblelayer"  	type="container"  	width="25"  	height="25"  	bgalpha="0"  	bgborder="3 0xffffff 1.00"  	bgroundedge="75"   	bgcapture="true"  	maskchildren="true"  	accuracy="1" 	 	ondown.touch="callwith(get(parent),onover);delayedcall(0.6,callwith(get(parent),onclick));" 	  	align="center" 	 /> <style  	name="cool_hotspotbubblelayer_shadow"  	type="container"  	width="25"  	height="25"  	bgalpha="0"  	bgborder="0 0xffffff 0"  	bgroundedge="75"   	bgcapture="false"  	accuracy="1"  	align="center" 	 		bgshadow="5 5 10 0 0x000000 0.5 inset" 	 /> <style  	name="cool_hotspotbubble_previewlayer"  	align="center" 	accuracy="1" 	width="prop"  	height="75"  	enabled="false" 	onloaded="if(pixelheight GT pixelwidth,copy(width,height);set(height,prop));set(alpha,0)" />       
+<!-- ********** -->
+<!-- Logo -->
+<!-- id : logo -->
+<!-- ********** -->
+
+
+  <layer align="top"
+         x="0"
+         y="450"
+         zorder="5"
+         name="logo"
+         keep="true"
+         visible="false"
+         capture="false"
+
+         url="%FIRSTXML%/graphics/logo/seal_3.png" 
+         handcursor="false"
+
+         height="10"
+         width="244"
+
+         />
+
+  <events name="logoevents" 
+    onTourStart="showlogo();"
+    keep="true" />
+
+  <action name="hidelogo">
+    set(layer[logo].visible, false);
+  </action>
+  <action name="showlogo">
+      set(layer[logo].visible, true);
+  </action>
+
+
+
+
+
+<!-- ********** -->
+<!-- St Kabir Public school, Chandigarh -->
+<!-- id : title -->
+<!-- ********** -->
+
+  <events name="title_events" 
+    onTourStart="showtitle();"
+    changetourlanguage="changeLanguagetitle"
+    keep="true" />
+
+  <action name="showtitle">set(layer[title].visible, true );</action>
+
+  <action name="changeLanguagetitle">
+    getmessage(layer[title].html,get(projecttitleid));
+    escape(layer[title].html);
+  </action>
+
+  <layer name="title" keep="true" zorder="6"
+         type="text"
+         align="bottom" x="0" y="0"
+         onloaded="getmessage(html,get(projecttitleid));escape(html);"
+         bg="false"
+         bgborder="0"
+         alpha="1"
+         visible="false"
+         capture="false" handcursor="false" enabled="false"
+         interactivecontent="false" 
+         css="text-align:center;
+              color:#ffffff;
+              font-family:Arial;
+              font-weight:bold;
+              font-size:16px;"/>
 
   <!-- Sounds Management -->
   <plugin name="soundinterface"
@@ -1143,118 +895,6 @@ if (device.desktop,
       );
     );
   </action>
-
-  <!-- Fullscreen Management -->
-  <action name="exitFullScreen" devices="fullscreensupport">set(tour_fullscreen,false);set(fullscreen,false);</action>
-  <action name="enterFullScreen" devices="fullscreensupport">set(tour_fullscreen,true);set(fullscreen,true);</action>
-  <action name="switchFullScreen">if(tour_fullscreen,exitFullScreen();,enterFullScreen(););</action>
-
-  
-  <events name="krpanoExitFullscreenEvent"
-    onexitfullscreen="if(tour_fullscreen,exitFullScreenChangeEvent(););"
-    keep="true" />
-
-  <action name="exitFullScreenChangeEvent" devices="fullscreensupport">set(tour_fullscreen,false);events.dispatch(onexitfullscreen);</action>
-
-<action name="viewControlMoveUp">
-	if(%1,
-		if(%2,
-			set(isfullvertical, false);
-			ifnot(scene[get(xml.scene)].planar,
-				sub(viewvfov, panoview.vmax, panoview.vmin);
-				if (viewvfov == 180,
-					set(isfullvertical, true);
-				);
-			);
-			if(isfullvertical == false AND calc(view.vlookat-%2) LT view.vlookatmin,
-				moveto(get(view.hlookat), get(view.vlookatmin));
-			,
-				moveto(get(view.hlookat), calc(view.vlookat-%2));
-			);
-		,
-			set(vlookat_moveforce, -1);
-			delayedcall(0.1, viewControlMoveVertStop());
-		);
-	,
-		set(vlookat_moveforce, -1);
-	);
-</action>
-<action name="viewControlMoveDown">
-	if(%1,
-		if(%2,
-			set(isfullvertical, false);
-			ifnot(scene[get(xml.scene)].planar,
-				sub(viewvfov, panoview.vmax, panoview.vmin);
-				if (viewvfov == 180,
-					set(isfullvertical, true);
-				);
-			);
-			if(sceneisfull360 == false AND calc(view.vlookat+%2) GT view.vlookatmax,
-				moveto(get(view.hlookat), get(view.vlookatmax));
-			,
-				moveto(get(view.hlookat), calc(view.vlookat+%2));
-			);
-		,
-			set(vlookat_moveforce, +1);
-			delayedcall(0.1, viewControlMoveVertStop());
-		);
-	,
-		set(vlookat_moveforce, +1);
-	);
-</action>
-<action name="viewControlMoveLeft">
-	if(%1,
-		if(%2,
-			set(isfullhorizontal, false);
-			ifnot(scene[get(xml.scene)].planar,
-				sub(viewhfov, panoview.hmax, panoview.hmin);
-				if (viewhfov == 360,
-					set(isfullhorizontal, true);
-				);
-			);
-			if(isfullhorizontal == false AND calc(view.hlookat-%2) LT view.hlookatmin,
-				moveto(get(view.hlookatmin), get(view.vlookat));
-			,
-				moveto(calc(view.hlookat-%2), get(view.vlookat));
-			);
-		,
-			set(hlookat_moveforce, -1);
-			delayedcall(0.1, viewControlMoveHoriStop());
-		);
-	,
-		set(hlookat_moveforce, -1);
-	);
-</action>
-<action name="viewControlMoveRight">
-	if(%1,
-		if(%2,
-			set(isfullhorizontal, false);
-			ifnot(scene[get(xml.scene)].planar,
-				sub(viewhfov, panoview.hmax, panoview.hmin);
-				if (viewhfov == 360,
-					set(isfullhorizontal, true);
-				);
-			);
-			if(isfullhorizontal == false AND calc(view.hlookat+%2) GT view.hlookatmax,
-				moveto(get(view.hlookatmax), get(view.vlookat));
-			,
-				moveto(calc(view.hlookat+%2), get(view.vlookat));
-			);
-		,
-			set(hlookat_moveforce, +1);
-			delayedcall(0.1, viewControlMoveHoriStop());
-			
-		);
-	,
-		set(hlookat_moveforce, +1);
-	);
-</action>
-<action name="viewControlMoveHoriStop">
-	set(hlookat_moveforce, 0);
-</action>
-<action name="viewControlMoveVertStop">
-	set(vlookat_moveforce, 0);
-</action>
 
 	<!-- WebVR plugin for VR availability tests -->
 

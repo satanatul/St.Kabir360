@@ -3,7 +3,7 @@
   <!-- Global variables used by actions and plugins -->
   <krpano
         tour_soundson="true"
-        tour_soundsvolume="100"
+        tour_soundsvolume="38"
         tour_autotourenabled="false"
         tour_autorotateenabled="false"
         tour_controlmodemousetype="drag"
@@ -14,7 +14,7 @@
         tour_displayfloorplan="false"
         tour_displayinfo="false"
         tour_displayspots="true"
-        tour_displaycontrols="true"
+        tour_displaycontrols="false"
         tour_language="en" />
   <krpano tour_gyroscopedevices="true" devices="no-desktop.and.html5" />
   <krpano tour_vrdevices="true" devices="html5" />

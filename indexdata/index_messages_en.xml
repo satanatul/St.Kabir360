@@ -25,22 +25,12 @@
 
 
 
-  <data name="en_webvrbuttontooltip"><![CDATA[]]></data>
-  <data name="en_logo1websiteurl"><![CDATA[]]></data>
-  <data name="en_SansControlBarprevSceneTip"><![CDATA[Previous scene]]></data>
-  <data name="en_SansControlBarnextSceneTip"><![CDATA[Next scene]]></data>
-  <data name="en_SansControlBarmoveLeftTip"><![CDATA[Move left]]></data>
-  <data name="en_SansControlBarmoveRightTip"><![CDATA[Move right]]></data>
-  <data name="en_SansControlBarmoveUpTip"><![CDATA[Move up]]></data>
-  <data name="en_SansControlBarmoveDownTip"><![CDATA[Move down]]></data>
-  <data name="en_SansControlBaropenFsTip"><![CDATA[Enter fullscreen]]></data>
-  <data name="en_SansControlBarcloseFsTip"><![CDATA[Exit fullscreen]]></data>
-  <data name="en_SansControlBarautorotateOnTip"><![CDATA[Start autorotation]]></data>
-  <data name="en_SansControlBarautorotateOffTip"><![CDATA[Stop autorotation]]></data>
   <data name="en_SansControlBarsoundsOnTip"><![CDATA[Start sounds]]></data>
   <data name="en_SansControlBarsoundsOffTip"><![CDATA[Stop sounds]]></data>
   <data name="en_SansControlBarenterVRTip"><![CDATA[VR mode]]></data>
   <data name="en_SansControlBarenterVRNotTip"><![CDATA[VR mode is unavailable]]></data>
+  <data name="en_cool_hotspotcoolhotspotstyle_name"><![CDATA[Default Point Spot Style]]></data>
+  <data name="en_logowebsiteurl"><![CDATA[]]></data>
 
 
   <data name="en_vr_setup_hmd0"><![CDATA[SELECT YOUR HMD]]></data>
