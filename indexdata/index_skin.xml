@@ -115,7 +115,7 @@
 
   <layer align="top"
          x="0"
-         y="500"
+         y="450"
          zorder="3"
          name="logo1"
          keep="true"
@@ -125,6 +125,8 @@
          url="%FIRSTXML%/graphics/logo1/seal_3.png" 
          handcursor="false"
 
+         height="10"
+         width="244"
 
          />
 
