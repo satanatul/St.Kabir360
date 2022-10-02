@@ -354,7 +354,7 @@
 
   <layer align="top"
          x="0"
-         y="450"
+         y="200"
          zorder="5"
          name="logo"
          keep="true"
@@ -364,8 +364,8 @@
          url="%FIRSTXML%/graphics/logo/seal_3.png" 
          handcursor="false"
 
-         height="10"
-         width="244"
+         height="17"
+         width="300"
 
          />
 
